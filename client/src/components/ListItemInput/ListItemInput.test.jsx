@@ -15,3 +15,28 @@ describe("It should render correctly", () => {
     expect(submitButton).toBeInTheDocument();
   });
 });
+
+describe("It should be able to submit the form", () => {
+  let submitButton, inputTextElement;
+
+  beforeEach(() => {
+    render(<ListItemInput />);
+    submitButton = screen.getByRole("button");
+    inputTextElement = screen.getByRole("textbox");
+  });
+
+  test("It should update the input value when the user types", () => {
+    userEvent.type(inputTextElement, "Write a new task");
+    expect(inputTextElement.value).toMatch(/write a new task/i);
+  });
+
+  test("It shouldn't be able to add an empty task", () => {
+    userEvent.type(inputTextElement, "   ");
+    expect(submitButton.disabled).toBeTruthy();
+  });
+
+  test("It should be able to add a new task", () => {
+    userEvent.type(inputTextElement, "Write a new task");
+    expect(submitButton.disabled).toBeFalsy();
+  });
+});

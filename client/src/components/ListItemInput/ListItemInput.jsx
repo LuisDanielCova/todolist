@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const ListItemInput = () => {
+  const [taskName, setTaskName] = useState("");
+
   return (
     <form
       onSubmit={(e) => {
@@ -12,8 +14,15 @@ export const ListItemInput = () => {
         name="taskInput"
         id="taskInput"
         placeholder="New Task"
+        value={taskName}
+        onChange={(e) => {
+          const { value } = e.target;
+          setTaskName(value);
+        }}
       />
-      <button type="submit">Add</button>
+      <button type="submit" disabled={taskName.trim().length <= 0}>
+        Add
+      </button>
     </form>
   );
 };
