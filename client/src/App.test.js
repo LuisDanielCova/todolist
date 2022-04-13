@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("It should render the basic layout", () => {
+  test("renders learn react element", () => {
+    render(<App />);
+    const headerElement = screen.getByRole("heading", { name: "Hello World" });
+    expect(headerElement).toBeInTheDocument();
+  });
 });
