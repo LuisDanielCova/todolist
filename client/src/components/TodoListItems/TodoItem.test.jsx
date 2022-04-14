@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { TodoListItem } from "./TodoListItem";
+import { TodoItem } from "./TodoItem";
 
 describe("It should display the information passed to it", () => {
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe("It should display the information passed to it", () => {
       title: "TODO Item 1",
     };
 
-    render(<TodoListItem todoItem={todoItem} />);
+    render(<TodoItem todoItem={todoItem} />);
   });
 
   test("It should have a li with the list-item class", () => {

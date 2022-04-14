@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const TodoListItem = ({ todoItem }) => {
+export const TodoItem = ({ todoItem }) => {
   const { id, title, check } = todoItem;
   const [checked, setChecked] = useState(check);
 
